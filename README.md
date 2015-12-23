@@ -28,3 +28,7 @@ The repository implementation is:
 class UserCrudRepository(converter: Converter[User, DBObject])
   extends AbstractMongoCrudRepository[User](converter)
 ```
+
+## Known issues/things to fix
+
+- [ ] attempting tp update non-existent resource results in an uninformative `unknown update failure for 567ac3aed4c6097b4bb23dbc` for example, need to make that more informative
