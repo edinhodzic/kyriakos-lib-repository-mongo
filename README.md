@@ -1,6 +1,6 @@
 # About
 
-Repository implementation based on [MongoDB](https://www.mongodb.com/).
+A repository implementation based on the [`otrl-lib-repository`](https://github.com/otrl/otrl-lib-repository) abstraction library and [MongoDB](https://www.mongodb.com/).
 
 # What's under the hood?
 
@@ -8,7 +8,7 @@ Implementation:
 
 - [Scala](http://www.scala-lang.org/)
 - [Casbah](https://mongodb.github.io/casbah/)
-- `otrl-lib-repository`
+- [`otrl-lib-repository`](https://github.com/otrl/otrl-lib-repository)
 
 Testing:
 
@@ -19,14 +19,35 @@ Testing:
 Given a domain object:
 
 ```scala
-case class User(data: String) extends Identifiable
+case class Person(firstname: String, lastname: String) extends Identifiable
 ```
 
 The repository implementation is:
 
 ```scala
-class UserCrudRepository(converter: Converter[User, DBObject])
-  extends AbstractMongoCrudRepository[User](converter)
+class PersonCrudRepository(converter: Converter[Person, DBObject])
+  extends AbstractMongoCrudRepository[Person](converter)
+```
+
+The converter referred to in the above code snippet, is one which converts a `User` object into Mongo's `DBObject` and the implementation in the above case is:
+
+```scala
+class PersonConverter extends Converter[Person, DBObject] {
+
+  override def serialise(person: Person): DBObject =
+    MongoDBObject.newBuilder
+      .+=("firstname" -> person.firstname)
+      .+=("lastname" -> person.lastname)
+      .result()
+
+
+  override def deserialise(dbObject: DBObject): Person = {
+    Person(
+      dbObject.get("firstname").asInstanceOf[String],
+      dbObject.get("lastname").asInstanceOf[String])
+  }
+
+}
 ```
 
 ## Known issues/things to fix
