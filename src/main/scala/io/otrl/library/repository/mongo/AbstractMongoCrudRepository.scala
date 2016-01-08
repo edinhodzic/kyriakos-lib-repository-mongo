@@ -4,8 +4,8 @@ import com.mongodb.DBObject
 import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.MongoCollection
 import com.mongodb.util.JSON
+import io.otrl.library.crud._
 import io.otrl.library.domain.Identifiable
-import io.otrl.library.repository._
 import org.bson.types.ObjectId
 import org.slf4j.{Logger, LoggerFactory}
 
@@ -14,7 +14,7 @@ import scala.util.{Failure, Success, Try}
 
 abstract class AbstractMongoCrudRepository[T <: Identifiable]
 (converter: Converter[T, DBObject], mongoClient: MongoClient = MongoClient(), databaseName: String = null)
-(implicit manifest: Manifest[T]) extends AbstractPartialCrudRepository[T] with PartialUpdates[T] with Queryable[T] {
+(implicit manifest: Manifest[T]) extends PartialCrudOperations[T] with PartialUpdates[T] with Queryable[T] {
 
   protected val logger: Logger = LoggerFactory getLogger getClass
 
@@ -68,7 +68,7 @@ abstract class AbstractMongoCrudRepository[T <: Identifiable]
     logger info s"deleting $resourceId"
     Try(collection remove idQuery(resourceId)) match {
       case Success(writeResult) =>
-        if (Option(writeResult).isDefined && writeResult.getN > 0) Success(Some())
+        if (Option(writeResult).isDefined && writeResult.getN > 0) Success(Some(Unit))
         else Success(None)
       case Failure(throwable) => logAndFail(throwable)
       case _ => logAndFail(new RuntimeException(s"unknown delete failure for $resourceId"))
