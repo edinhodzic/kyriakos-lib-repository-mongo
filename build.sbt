@@ -29,3 +29,11 @@ libraryDependencies ++= Seq(
 )
 
 publishTo := Some("OTRL" at "https://mvn.otrl.io")
+
+ivyScala := ivyScala.value map {
+  _.copy(overrideScalaVersion = true)
+}
+
+publishTo := Some("OTRL" at "https://mvn.otrl.io")
+
+scalacOptions ++= Seq("-deprecation", "-feature")
