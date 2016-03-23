@@ -112,7 +112,9 @@ class MongoCrudRepositoryImplSpec extends SpecificationWithJUnit with Mockito {
 
   }
 
-  "repository update" should {
+  // TODO test whole updates
+
+  "repository partial update function" should {
 
     def mockCollectionUpdateToReturn(n: Int) = {
       writeResult.getN returns n
@@ -149,7 +151,7 @@ class MongoCrudRepositoryImplSpec extends SpecificationWithJUnit with Mockito {
 
   }
 
-  "repository delete" should {
+  "repository delete function" should {
 
     def mockCollectionRemoveToReturn(n: Int) = {
       writeResult.getN returns n
@@ -184,7 +186,7 @@ class MongoCrudRepositoryImplSpec extends SpecificationWithJUnit with Mockito {
 
   }
 
-  "repository query" should {
+  "repository query function" should {
 
     val searchString: JSFunction = """{ "this" : "foo", "that" : "bar", "other" : "baz" }"""
     val searchQuery: Imports.DBObject = MongoDBObject("this" -> "foo", "that" -> "bar", "other" -> "baz")

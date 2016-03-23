@@ -14,7 +14,7 @@ import scala.util.{Failure, Success, Try}
 
 abstract class AbstractMongoCrudRepository[T <: Identifiable]
 (converter: Converter[T, DBObject], mongoClient: MongoClient = MongoClient(), databaseName: String = null)
-(implicit manifest: Manifest[T]) extends PartialCrudOperations[T] with PartialUpdates[T] with Queryable[T] {
+(implicit manifest: Manifest[T]) extends CrudOperations[T] with Queryable[T] {
 
   protected val logger: Logger = LoggerFactory getLogger getClass
 
@@ -52,6 +52,8 @@ abstract class AbstractMongoCrudRepository[T <: Identifiable]
       case _ => logAndFail(new RuntimeException(s"unknown read failure for $resourceId"))
     }
   }
+
+  override def update(resource: T): Try[Option[T]] = throw new UnsupportedOperationException
 
   override def update(resourceId: String, updateQuery: String): Try[Option[AnyRef]] = {
     logger info s"updating $resourceId"
