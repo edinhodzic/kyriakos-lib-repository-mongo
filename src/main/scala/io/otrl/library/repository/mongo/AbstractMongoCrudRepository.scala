@@ -106,7 +106,7 @@ abstract class AbstractMongoCrudRepository[T <: Identifiable]
     val resourceIterator: Iterator[T] = dbObjectIterator map (converter deserialise)
     val resourceArray: Array[T] = resourceIterator.toArray[T]
     // TODO remove the hardcoded page number (2) when the initial request can take in pagination
-    new Paginated[T](resourceArray, mongoCursor size, 2)
+    Paginated[T](resourceArray, mongoCursor size, 2)
   }
 
 }
