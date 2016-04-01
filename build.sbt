@@ -18,6 +18,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.scala-logging" % "scala-logging_2.11" % "3.1.0",
   // otrl
   "io.otrl.library" % "otrl-lib-crud_2.11" % "0.1.0-SNAPSHOT",
+  "io.otrl.library" % "otrl-lib-utils_2.11" % "0.1.0-SNAPSHOT",
   // database
   "org.mongodb" % "casbah-core_2.11" % "2.8.2",
   "org.mongodb" % "casbah-commons_2.11" % "2.8.2",

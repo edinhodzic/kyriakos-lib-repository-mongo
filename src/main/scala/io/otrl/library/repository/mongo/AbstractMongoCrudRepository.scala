@@ -6,6 +6,7 @@ import com.mongodb.casbah.MongoCollection
 import com.mongodb.util.JSON
 import io.otrl.library.crud._
 import io.otrl.library.domain.Identifiable
+import io.otrl.library.utils.ManifestUtils
 import org.bson.types.ObjectId
 import org.slf4j.{Logger, LoggerFactory}
 
@@ -21,7 +22,7 @@ abstract class AbstractMongoCrudRepository[T <: Identifiable]
   lazy private val collection: MongoCollection = createCollection
 
   def createCollection: MongoCollection = {
-    val singularDomain: String = manifest.runtimeClass.getSimpleName.toLowerCase
+    val singularDomain: String = ManifestUtils.simpleName(manifest)
     val dbName: String = if (Option(databaseName) isDefined) databaseName else s"${singularDomain}s"
     logger info s"using database name $dbName"
     mongoClient(dbName)(singularDomain)
