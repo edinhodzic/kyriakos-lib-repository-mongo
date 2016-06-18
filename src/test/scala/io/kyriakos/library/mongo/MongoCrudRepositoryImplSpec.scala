@@ -1,11 +1,11 @@
-package io.otrl.library.repository.mongo
+package io.kyriakos.library.mongo
 
 import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.MongoCollection
 import com.mongodb.casbah.commons.{Imports, TypeImports}
 import com.mongodb.{DBObject, casbah}
-import io.otrl.library.crud.Converter
-import io.otrl.library.repository.domain.Resource
+import io.kyriakos.library.repository.domain.Resource
+import io.kyriakos.library.crud.Converter
 import org.mockito.Matchers
 import org.specs2.mock.Mockito
 import org.specs2.mutable.SpecificationWithJUnit

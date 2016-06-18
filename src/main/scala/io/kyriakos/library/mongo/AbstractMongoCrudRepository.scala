@@ -1,12 +1,12 @@
-package io.otrl.library.repository.mongo
+package io.kyriakos.library.mongo
 
 import com.mongodb.DBObject
 import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.MongoCollection
 import com.mongodb.util.JSON
-import io.otrl.library.crud._
-import io.otrl.library.domain.Identifiable
-import io.otrl.library.utils.ManifestUtils
+import io.kyriakos.library.crud._
+import io.kyriakos.library.domain.Identifiable
+import io.kyriakos.library.utils.ManifestUtils
 import org.bson.types.ObjectId
 import org.slf4j.{Logger, LoggerFactory}
 

@@ -1,14 +1,14 @@
 import sbt._
 
-organization := "io.otrl.library"
+organization := "io.kyriakos.library"
 
-name := "otrl-lib-repository-mongo"
+name := "kyriakos-lib-repository-mongo"
 
 version := "0.1.0-SNAPSHOT"
 
 scalaVersion := "2.11.7"
 
-lazy val otrlLibRepoMongo = project.in(file("."))
+lazy val kyriakosLibRepoMongo = project.in(file("."))
 
 libraryDependencies ++= Seq(
   // scala
@@ -16,9 +16,9 @@ libraryDependencies ++= Seq(
   // logging
   "ch.qos.logback" % "logback-classic" % "1.1.3",
   "com.typesafe.scala-logging" % "scala-logging_2.11" % "3.1.0",
-  // otrl
-  "io.otrl.library" % "otrl-lib-crud_2.11" % "0.1.0-SNAPSHOT",
-  "io.otrl.library" % "otrl-lib-utils_2.11" % "0.1.0-SNAPSHOT",
+  // kyriakos
+  "io.kyriakos.library" % "kyriakos-lib-crud_2.11" % "0.1.0-SNAPSHOT",
+  "io.kyriakos.library" % "kyriakos-lib-utils_2.11" % "0.1.0-SNAPSHOT",
   // database
   "org.mongodb" % "casbah-core_2.11" % "2.8.2",
   "org.mongodb" % "casbah-commons_2.11" % "2.8.2",
@@ -29,12 +29,8 @@ libraryDependencies ++= Seq(
   "org.specs2" % "specs2-mock_2.11" % "3.6.6" % "test"
 )
 
-publishTo := Some("OTRL" at "https://mvn.otrl.io")
-
 ivyScala := ivyScala.value map {
   _.copy(overrideScalaVersion = true)
 }
-
-publishTo := Some("OTRL" at "https://mvn.otrl.io")
 
 scalacOptions ++= Seq("-deprecation", "-feature")
