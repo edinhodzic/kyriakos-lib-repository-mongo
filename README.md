@@ -2,6 +2,8 @@
 
 A repository implementation based on the [`kyriakos-lib-repository`](https://github.com/edinhodzic/kyriakos-lib-repository) abstraction library and [MongoDB](https://www.mongodb.com/).
 
+[![Build Status](https://travis-ci.org/edinhodzic/kyriakos-lib-repository-mongo.svg?branch=master)](https://travis-ci.org/edinhodzic/kyriakos-lib-repository-mongo)
+
 # What's under the hood?
 
 Implementation:
