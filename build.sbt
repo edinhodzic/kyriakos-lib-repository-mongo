@@ -1,14 +1,24 @@
 import sbt._
+import bintray.Keys._
 
 organization := "io.kyriakos.library"
 
 name := "kyriakos-lib-repository-mongo"
 
-version := "0.1.0-SNAPSHOT"
+version := "1.0.0"
 
 scalaVersion := "2.11.7"
 
-lazy val kyriakosLibRepoMongo = project.in(file("."))
+lazy val kyriakosLibRepoMongo = project.in(file(".")).
+  settings(bintrayPublishSettings: _*).
+  settings(
+    sbtPlugin := true,
+    name := "kyriakos-lib-repository-mongo",
+    licenses += ("MIT", url("https://opensource.org/licenses/MIT")),
+    publishMavenStyle := false,
+    repository in bintray := "kyriakos",
+    bintrayOrganization in bintray := None
+  )
 
 libraryDependencies ++= Seq(
   // scala
