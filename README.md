@@ -1,6 +1,6 @@
 # About
 
-A repository implementation based on the [`otrl-lib-repository`](https://github.com/otrl/otrl-lib-repository) abstraction library and [MongoDB](https://www.mongodb.com/).
+A repository implementation based on the [`kyriakos-lib-repository`](https://github.com/edinhodzic/kyriakos-lib-repository) abstraction library and [MongoDB](https://www.mongodb.com/).
 
 # What's under the hood?
 
@@ -8,7 +8,7 @@ Implementation:
 
 - [Scala](http://www.scala-lang.org/)
 - [Casbah](https://mongodb.github.io/casbah/)
-- [`otrl-lib-repository`](https://github.com/otrl/otrl-lib-repository)
+- [`kyriakos-lib-repository`](https://github.com/edinhodzic/kyriakos-lib-repository)
 
 Testing:
 
