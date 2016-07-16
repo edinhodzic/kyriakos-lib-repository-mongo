@@ -45,4 +45,4 @@ ivyScala := ivyScala.value map {
   _.copy(overrideScalaVersion = true)
 }
 
-scalacOptions ++= Seq("-deprecation", "-feature")
+scalacOptions ++= Seq("-deprecation", "-feature", "-language:postfixOps")
